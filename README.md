@@ -2,6 +2,9 @@
 
 > Tips and tricks working with Jenkins shared libraries
 
+If you still have to work with Jenkins in 2022, you may find this useful to you :)
+
+
 ## Jenkins and [kaniko](https://github.com/GoogleContainerTools/kaniko)
 
 Jenkins and kaniko works pretty much out of the box, until you have to use multi-stage Dockerfile, which is quite commonly used these days.
@@ -48,4 +51,11 @@ Refs:
 
 
 ## `java.io.NotSerializableException` related errors
+
+> *Pipeline restricts all variables to Serializable types, so keeping Pipeline logic simple helps avoid a NotSerializableException - see appendix at the bottom.*
+> - [Best practices for scalable pipeline code - Jenkins's blog](https://www.jenkins.io/blog/2017/02/01/pipeline-scalability-best-practice/)
+
+This is another pain point of Jenkins. Avoid using non-serializable types (only safe in @NonCPS functions). Example of non-serializable types are iterators, regex matchers, etc...
+
+Another example that I faced with is with the `groovy.text.SimpleTemplateEngine`. While `SimpleTemplateEngine` is not serializable, `groovy.text.StreamingTemplateEngine` is. So you may want to switch over to it.
 
