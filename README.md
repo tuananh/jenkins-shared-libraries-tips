@@ -20,9 +20,9 @@ sh """
 """
 ```
 
-When you do this, Jenkins will use a wrapper script around it. The purpose of this script is to notify Jenkins when the script successes or fails.
+When you do this, Jenkins will use a wrapper script around it. The purpose of this script is to notify Jenkins when the `sh` script succeeds or fails.
 
-The script looks like this
+The wrapper script looks like this
 
 ```sh
 sh -c ({ while [ -d '/home/jenkins/agent/workspace/test@tmp/durable-ca5ae635' -a \! -f '/home/jenkins/agent/workspace/test@tmp/durable-ca5ae635/jenkins-result.txt' ]; do touch '/home/jenkins/agent/workspace/test@tmp/durable-ca5ae635/jenkins-log.txt'; sleep 3; done } & jsc=durable-16856647925e219f4405aa6c51dc26b2; JENKINS_SERVER_COOKIE=$jsc 'sh' -xe  '/home/jenkins/agent/workspace/test@tmp/durable-ca5ae635/script.sh' > '/home/jenkins/agent/workspace/test@tmp/durable-ca5ae635/jenkins-log.txt' 2>&1; echo $? > '/home/jenkins/agent/workspace/test@tmp/durable-ca5ae635/jenkins-result.txt.tmp'; mv '/home/jenkins/agent/workspace/test@tmp/durable-ca5ae635/jenkins-result.txt.tmp' '/home/jenkins/agent/workspace/test@tmp/durable-ca5ae635/jenkins-result.txt'; wait) >&- 2>&- &
@@ -39,6 +39,12 @@ wrapper script does not seem to be touching the log file
 ```
 
 The fix here is simple. You just have to use `--ignore-path /busybox` flag and then the wrapper script will work like it supposes too.
+
+Refs:
+
+- https://github.com/GoogleContainerTools/kaniko/pull/1622
+- https://github.com/GoogleContainerTools/kaniko/issues/1275
+- https://github.com/GoogleContainerTools/kaniko/issues/1449
 
 
 ## `java.io.NotSerializableException` related errors
