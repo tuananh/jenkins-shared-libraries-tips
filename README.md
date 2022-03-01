@@ -1,8 +1,8 @@
 # Jenkins Share Libraries Tips
 
-> Tips and tricks working with Jenkins shared libraries
+> Tips and tricks with Jenkins shared libraries
 
-If you still have to work with Jenkins in 2022, you may find this useful to you :)
+If you still have to work with Jenkins in 2022, you may find this useful to you.
 
 
 ## Jenkins and [kaniko](https://github.com/GoogleContainerTools/kaniko)
