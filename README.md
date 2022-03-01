@@ -1,4 +1,4 @@
-# jenkins-shared-libraries
+# Jenkins Share Libraries Tips
 
 > Tips and tricks working with Jenkins shared libraries
 
