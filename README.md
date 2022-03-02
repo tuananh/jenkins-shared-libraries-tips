@@ -41,7 +41,7 @@ You will then see something like this in Jenkins logs and the advice to increase
 wrapper script does not seem to be touching the log file 
 ```
 
-The fix here is simple. You just have to use `--ignore-path /busybox` flag and then the wrapper script will work like it supposes too.
+The fix here is simple. You just have to use `--ignore-path=/busybox` flag and then the wrapper script will work like it supposes too.
 
 Refs:
 
